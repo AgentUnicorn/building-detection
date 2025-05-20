@@ -5,7 +5,7 @@ import shutil
 from tqdm import tqdm
 
 
-def split_dataset(data_dir, target_dir, total_samples=None, seed=42):
+def SplitDataset(data_dir, target_dir, total_samples=None, seed=42):
     random.seed(seed)
 
     # Image folders
@@ -23,14 +23,12 @@ def split_dataset(data_dir, target_dir, total_samples=None, seed=42):
     # Compute sizes
     n = len(image_files)
     train_cutoff = int(0.85 * n)
-    val_cutoff = int(0.95 * n)
 
     # Split into three groups (no shuffle yet)
     train_files = image_files[:train_cutoff]
-    val_files = image_files[train_cutoff:val_cutoff]
-    test_files = image_files[val_cutoff:]
+    val_files = image_files[train_cutoff:]
 
-    splits = {"train": train_files, "val": val_files, "test": test_files}
+    splits = {"train": train_files, "val": val_files}
 
     for split, files in splits.items():
         split_dir = os.path.join(target_dir, split)
