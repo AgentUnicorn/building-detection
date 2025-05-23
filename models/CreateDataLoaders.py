@@ -15,6 +15,8 @@ from preprocess.Transformer import getTrainTransform, getValidTransform
 
 
 def CreateDataLoaders(
+    width,
+    height,
     data_dir,
     batch_size,
     num_workers,
@@ -24,8 +26,8 @@ def CreateDataLoaders(
     without physically moving files.
     """
     # Define transforms
-    train_transform = getTrainTransform()
-    val_test_transform = getValidTransform()
+    train_transform = getTrainTransform(width, height)
+    val_test_transform = getValidTransform(width, height)
 
     # Dataset paths
     train_dir = os.path.join(data_dir, "train/3band")
