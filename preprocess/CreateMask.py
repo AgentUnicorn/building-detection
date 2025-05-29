@@ -69,47 +69,10 @@ def Create_Masks_For_Dataset(raster_Src_dir, vector_Src_dir, dst_dir):
     ):
         rasterSrc = raster_Src_dir + "/" + raster
         vectorSrc = vector_Src_dir + "/" + vector
-        poly_mask_dst = dst_dir + "/" + raster.replace("3band", "Poly_Mask")
+        poly_mask_dst = dst_dir + "/" + raster.replace("3band", "mask")
         create_poly_mask(
             rasterSrc=rasterSrc,
             vectorSrc=vectorSrc,
             npDistFileName=poly_mask_dst,
             burn_values=255,
         )
-
-
-# if __name__ == "__main__":
-#
-#     # We want to create Poly Mask for each of our 3band images in the training, val, and test sets.
-#     # Lets define our paths first:
-#     # Training set:
-#     rasterSrc_dir_train = (
-#         "E:/Spacenet Database/Project Database/Training Data/image_3B/img"
-#     )
-#     vectorSrc_dir_train = "E:/Spacenet Database/Project Database/Training Data/vector"
-#     dst_dir_train = "E:/Spacenet Database/Project Database/Training Data/mask/img"
-#     Create_Masks_For_Dataset(
-#         raster_Src_dir=rasterSrc_dir_train,
-#         vector_Src_dir=vectorSrc_dir_train,
-#         dst_dir=dst_dir_train,
-#     )
-#     # Validation set:
-#     rasterSrc_dir_val = (
-#         "E:/Spacenet Database/Project Database/Validation Data/image_3B/img"
-#     )
-#     vectorSrc_dir_val = "E:/Spacenet Database/Project Database/Validation Data/vector"
-#     dst_dir_val = "E:/Spacenet Database/Project Database/Validation Data/mask/img"
-#     Create_Masks_For_Dataset(
-#         raster_Src_dir=rasterSrc_dir_val,
-#         vector_Src_dir=vectorSrc_dir_val,
-#         dst_dir=dst_dir_val,
-#     )
-#     # Test set
-#     rasterSrc_dir_test = "E:/Spacenet Database/Project Database/Test Data/image_3B/img"
-#     vectorSrc_dir_test = "E:/Spacenet Database/Project Database/Test Data/vector"
-#     dst_dir_test = "E:/Spacenet Database/Project Database/Test Data/mask/img"
-#     Create_Masks_For_Dataset(
-#         raster_Src_dir=rasterSrc_dir_test,
-#         vector_Src_dir=vectorSrc_dir_test,
-#         dst_dir=dst_dir_test,
-#     )
