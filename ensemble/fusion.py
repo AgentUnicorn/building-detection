@@ -92,7 +92,7 @@ def fusion(image_path, unet_mask_path, sam_mask_path, fused_mask_path):
 
     # Weighted Fusion
     alpha, beta = 0.6, 0.4
-    weighted = alpha * unet_mask + beta * sam_mask
+    weighted = alpha * sam_mask + beta * unet_mask
     weighted_mask = (weighted > 0.5).astype(np.uint8) * 255
     Image.fromarray(weighted_mask).save(
         os.path.join(fused_mask_path, f"weighted_{filename}.png")
