@@ -83,7 +83,7 @@ def create_sam_mask(predictor, image_path, unet_mask_path, sam_mask_output):
         binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
     )
     if len(contours) == 0:
-        print(f"[Note] No buildings found in {base_name}")
+        print(f"[Note] No buildings found")
         return
 
     boxes = [cv2.boundingRect(cnt) for cnt in contours]
